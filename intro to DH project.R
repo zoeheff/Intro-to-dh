@@ -135,20 +135,20 @@ top_countries_df <- data.frame(country = names(top_countries),
                                count = as.numeric(top_countries))
 
 # Creating a bar plot
-bar_plot <- ggplot(top_countries_df, aes(x = country, y = count)) +
-  geom_bar(stat = "identity", fill = "steelblue") +
-  xlab("Country") +
-  ylab("Count") +
-  ggtitle("Top Countries by Count") +
+bar_plot <- ggplot(top_countries_df, aes(x = country, y = count)) 
+  geom_bar(stat = "identity", fill = "steelblue") 
+  xlab("Country") 
+  ylab("Count") 
+  ggtitle("Top Countries by Count") 
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
 # Displaying the bar plot
 print(bar_plot)
 
 # Creating a word cloud
-> wordcloud(words = names(top_countries), freq = top_countries,
-            +           scale = c(7, 3), random.order = FALSE,
-            +           colors = brewer.pal(8, "Dark2"))
+ wordcloud(words = names(top_countries), freq = top_countries,
+                       scale = c(7, 3), random.order = FALSE,
+                       colors = brewer.pal(8, "Dark2"))
 
 #GEOVISUALISATION
 # Identifying the most frequent countries
@@ -166,10 +166,10 @@ merged_data <- merge(map_data, country_data, by.x = "region", by.y = "country",
                      all.x = TRUE)
 
 #  Creating a choropleth map
-ggplot(merged_data, aes(x = long, y = lat, group = group, fill = frequency)) +
+ggplot(merged_data, aes(x = long, y = lat, group = group, fill = frequency)) 
   geom_polygon(color = "white", size = 0.1) +
   scale_fill_gradient(low = "lightblue", high = "darkblue", na.value = "grey50")
-+
+
   theme_void()
 
 
